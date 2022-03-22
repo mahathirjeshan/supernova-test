@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap 4.5 test</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <style>
+      @media screen and (max-width: 768px) {
+        .carousel-inner {
+          transform: translateX(-60.5%);
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          overflow: visible;
+        }
+
+        .carousel-inner .active + .carousel-item,
+        .carousel-inner .active + .carousel-item + .carousel-item,
+        .carousel-inner
+          .active
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item,
+        .carousel-inner
+          .active
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          display: block;
+        }
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item,
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item,
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item,
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          transition: none;
+        }
+
+        .active.carousel-item-left,
+        .carousel-item-prev:not(.carousel-item-right) {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+
+        .active.carousel-item-left,
+        .active.carousel-item-right {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+
+        .carousel-item.carousel-item-next,
+        .carousel-item.carousel-item-next + .carousel-item,
+        .carousel-item.carousel-item-next + .carousel-item + .carousel-item {
+          transform: translateX(-100%);
+          /* transition: transform 0.6s ease-in-out,
+            -webkit-transform 0.6s ease-in-out; */
+        }
+
+        .product-grid {
+          padding-right: 7.5px;
+          padding-left: 7.5px;
+        }
+      }
+      @media (min-width: 768px) {
+        .carousel-inner {
+          transform: translateX(-12.5%);
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          overflow: visible;
+        }
+
+        /* show 3 items */
+        .carousel-inner .active,
+        .carousel-inner .active + .carousel-item,
+        .carousel-inner .active + .carousel-item + .carousel-item,
+        .carousel-inner
+          .active
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item,
+        .carousel-inner
+          .active
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          display: block;
+        }
+
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item,
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item,
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item,
+        .carousel-inner
+          .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          transition: none;
+        }
+
+        .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          z-index: -1;
+          position: relative;
+        }
+
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+          position: relative;
+          transform: translate3d(-100, 0, 0);
+        }
+
+        .carousel-inner
+          .active.carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          position: absolute;
+          top: 0;
+          right: -100%;
+          z-index: -1;
+          display: block;
+          visibility: visible;
+        }
+
+        .carousel-inner
+          .active.carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          position: absolute;
+          top: 0;
+          right: -50%;
+          z-index: -1;
+          display: block;
+          visibility: visible;
+        }
+
+        /* left or forward direction */
+        .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+        .carousel-item-next.carousel-item-left + .carousel-item,
+        .carousel-item-next.carousel-item-left
+          + .carousel-item
+          + .carousel-item,
+        .carousel-item-next.carousel-item-left
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item,
+        .carousel-item-next.carousel-item-left
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          position: relative;
+          transform: translate3d(-100%, 0, 0);
+          visibility: visible;
+        }
+
+        /* farthest right hidden item must be abso position for animations */
+        .carousel-inner .carousel-item-prev.carousel-item-right {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          display: block;
+          visibility: visible;
+        }
+
+        /* right or prev direction */
+        .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+        .carousel-item-prev.carousel-item-right + .carousel-item,
+        .carousel-item-prev.carousel-item-right
+          + .carousel-item
+          + .carousel-item,
+        .carousel-item-prev.carousel-item-right
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item,
+        .carousel-item-prev.carousel-item-right
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item
+          + .carousel-item {
+          position: relative;
+          transform: translate3d(100%, 0, 0);
+          visibility: visible;
+          display: block;
+          visibility: visible;
+        }
+
+        .active.carousel-item-right,
+        .carousel-item-next:not(.carousel-item-left) {
+          position: relative;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .carousel-caption {
+        color: #000;
+      }
+
+      .carousel-item {
+        margin-right: 0 !important;
+      }
+
+      .carousel-control-next,
+      .carousel-control-prev {
+        width: 10%;
+      }
+
+      .carousel-control-next span,
+      .carousel-control-prev span {
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-control-prev span {
+        left: 0;
+      }
+
+      .carousel-control-next span {
+        right: 0;
+      }
+
+      /* Product Grid */
+      .svg--star {
+        color: #f4436c;
+        height: 16px;
+        margin: 0 2.5px;
+      }
+
+      .svg--star path {
+        fill: currentColor;
+      }
+
+      .review-count {
+        margin-left: 5px;
+      }
+
+      .review-count a {
+        color: #151515;
+        text-decoration: underline;
+      }
+
+      .review-count a:hover {
+        color: #f4436c;
+      }
+
+      .product-grid__title {
+        font-size: 20px;
+        line-height: 25px;
+        color: #343a40;
+        height: 100%;
+        min-height: 80px;
+        flex-grow: 1;
+      }
+
+      .product-grid__price {
+        color: #f4436c;
+        font-size: 20px;
+        line-height: 25px;
+        margin: 0 5px;
+      }
+
+      .product-grid__price--regular {
+        color: #151515;
+        text-decoration: line-through;
+      }
+
+      .add-to-cart {
+        color: #fff;
+        background-color: #f4436c;
+        border-color: #f4436c;
+      }
+
+      .add-to-cart:hover {
+        background-color: #b22d4b;
+        border-color: #b22d4b;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div
+        id="demo"
+        class="carousel slide carousel--loop overflow-hidden"
+        data-ride="carousel"
+        data-interval="false"
+        data-slide-number="4"
+      >
+        <div class="carousel-inner row flex-nowrap">
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div class="carousel-item product-grid col-9 col-md-3 active">
+            <a href="#">
+              <div
+                class="product-grid__image embed-responsive embed-responsive-1by1"
+              >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0028/8253/5533/products/MasqueFullSizewithTangleTamer_300x.jpg?v=1644825152"
+                  alt="New York"
+                  class="embed-responsive-item"
+                />
+              </div>
+            </a>
+            <div
+              class="product-grid__details pt-2 pb-0 position-relative flex-grow-1 d-flex flex-column px-2"
+            >
+              <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M11.183 2.123l1.52 3.88a1.263 1.263 0 00.892.7l4.463.3a1.111 1.111 0 01.929 1.266 1.116 1.116 0 01-.33.637l-3.372 3.113a1.141 1.141 0 00-.3 1.1l.991 4.52a1.074 1.074 0 01-.751 1.318 1.071 1.071 0 01-.835-.116l-3.867-2.41a1.061 1.061 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.471-.363 1.079 1.079 0 01-.116-.837l.991-4.52a1.144 1.144 0 00-.3-1.1l-3.272-3a1.154 1.154 0 01-.118-1.625 1.15 1.15 0 01.712-.388l4.463-.4a1.061 1.061 0 00.892-.7L9.131 1.59a1.015 1.015 0 011.352-.488 1.019 1.019 0 01.528.588z"
+                      ></path>
+                    </svg>
+                    <svg
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg--star"
+                    >
+                      <path
+                        d="M9.921 16.189l-.506.247-3.86 2.41a1.066 1.066 0 01-1.467-.368 1.081 1.081 0 01-.116-.837l.989-4.52a1.145 1.145 0 00-.3-1.1l-3.265-3a1.156 1.156 0 01-.118-1.625c.182-.212.435-.35.711-.388l4.454-.4a1.06 1.06 0 00.891-.7L9.115 1.59a1.111 1.111 0 01.884-.584c.001 1.247-.078 15.183-.078 15.183z"
+                      ></path>
+                      <path
+                        d="M10.052 2c-.002 0-.007 0-.011.005L8.28 6.265A2.07 2.07 0 016.545 7.6l-4.429.397a.15.15 0 00-.079.048.154.154 0 00.016.217l.021.019 3.272 3.004.028.026a2.15 2.15 0 01.568 2.044l-.987 4.502a.99.99 0 01-.012.048.078.078 0 00.008.06.07.07 0 00.094.026l3.858-2.405a2.06 2.06 0 012.15 0l3.857 2.405c.023.012.04.01.052.006a.074.074 0 00.05-.09.948.948 0 01-.011-.05l-.988-4.502a2.146 2.146 0 01.594-2.068l3.36-3.103A.116.116 0 0018 8.12a.112.112 0 00-.072-.123l-4.4-.296a1 1 0 01-.13-.018 2.272 2.272 0 01-1.625-1.316l-1.692-4.32a1.07 1.07 0 01-.017-.042.017.017 0 00-.006-.004L10.053 2h-.001zm.001-1a1.02 1.02 0 01.96.685l.17.438 1.52 3.88c.17.361.501.622.893.701l4.463.3a1.11 1.11 0 01.6 1.904l-3.372 3.113c-.29.287-.404.708-.3 1.102l.991 4.52a1.074 1.074 0 01-1.586 1.202l-3.868-2.41a1.06 1.06 0 00-1.091 0l-3.867 2.41a1.07 1.07 0 01-1.587-1.202l.991-4.52a1.144 1.144 0 00-.3-1.102L1.398 9.017a1.154 1.154 0 01.594-2.012l4.463-.401a1.06 1.06 0 00.892-.701l1.785-4.318c.173-.369.539-.585.92-.585h.001z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span class="review-count"
+                    >(<a href="/products/deep-condition-bundle#write-a-review"
+                      >1189</a
+                    >)</span
+                  >
+                </div>
+              </div>
+              <p
+                class="product-grid__title d-flex flex-column justify-content-center text-center"
+              >
+                Super Hydrating Shampoo & Conditioner Set
+              </p>
+              <p class="text-center">
+                <span class="product-grid__price product-grid__price--regular"
+                  >SG$128.70</span
+                >
+                <span class="product-grid__price">SG$102.90</span>
+              </p>
+              <button
+                type="button"
+                class="btn btn-lg btn-primary add-to-cart btn-block px-0"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 22.627 22.627"
+              width="16px"
+            >
+              <path
+                d="M16.2 1.885l-9.428 9.428 9.428 9.428-1.886 1.886L3 11.313 14.314 0z"
+              ></path>
+            </svg>
+          </span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 22.627 22.627"
+              width="16px"
+            >
+              <path
+                d="M5.428 20.742l9.428-9.428-9.428-9.428L7.314 0l11.314 11.314L7.314 22.627z"
+              ></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".carousel--loop").on("slide.bs.carousel", function (e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 5;
+        var totalItems = $(".carousel-item").length;
+
+        console.log(e.direction, idx);
+
+        if (idx >= totalItems - itemsPerSlide) {
+          var it = itemsPerSlide - (totalItems - idx);
+          console.log(itemsPerSlide, it, totalItems, idx);
+          for (var i = 0; i < it; i++) {
+            // append slides to end
+            if (e.direction == "left") {
+              $(".carousel-item").eq(i).appendTo(".carousel-inner");
+            } else {
+              $(".carousel-item").eq(0).appendTo(".carousel-inner");
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
